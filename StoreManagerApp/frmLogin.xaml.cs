@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StoreManagerResource.UC;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,7 @@ namespace StoreManagerApp
     /// <summary>
     /// Interaction logic for frmLogin.xaml
     /// </summary>
-    public partial class frmLogin : Window
+    public partial class frmLogin : HWindow
     {
         public frmLogin()
         {

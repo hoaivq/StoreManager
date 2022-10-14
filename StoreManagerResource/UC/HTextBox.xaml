@@ -1,0 +1,60 @@
+﻿<TextBox x:Class="StoreManagerResource.UC.HTextBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:StoreManagerResource.UC"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="200" Style="{DynamicResource HTextBoxStyle}" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" TextChanged="TextBox_TextChanged"    >
+    <TextBox.Resources>
+        <Style x:Key="HTextBoxStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <DockPanel LastChildFill="True" DockPanel.Dock="Left">
+                            <Border VerticalAlignment="Center" DockPanel.Dock="Top" Height="{Binding _CationHeight, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=TextBox}}" Visibility="{Binding _CationVisibility, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=TextBox}}">
+                                <TextBlock Cursor="Arrow"
+                                           Background="Transparent"
+                                           VerticalAlignment="Bottom"
+                                           TextTrimming="CharacterEllipsis"
+                                           TextWrapping="Wrap"
+                                           Margin="0,0,0,4"
+                                           Text="{Binding _CaptionText, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=TextBox}}"
+                                           Foreground="{Binding _CaptionForeground, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=TextBox}}"
+                                           />
+                            </Border>
+                            <DockPanel LastChildFill="True" DockPanel.Dock="Bottom">
+                                <Grid DockPanel.Dock="Left">
+                                    <Border x:Name="border" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True"/>
+                                    <ScrollViewer Cursor="IBeam"
+                                                  x:Name="PART_ContentHost" Focusable="False"
+                                                  HorizontalScrollBarVisibility="Hidden"
+                                                  VerticalScrollBarVisibility="Hidden"
+                                                  Padding="{TemplateBinding Padding}"
+                                                  Margin="0"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                    <TextBlock Padding="{TemplateBinding Padding}"
+                                               Text="{Binding _PlaceHolder, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=TextBox}}"
+                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                               Foreground="{Binding _PlaceHolderForeground, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=TextBox}}"
+                                               Visibility="{Binding _PlaceHolderVisibility, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=TextBox}}"
+                                               />
+                                </Grid>
+                            </DockPanel>
+                        </DockPanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="1"/>
+                                <Setter Property="Background" TargetName="border" Value="#E4E4E4"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="True">
+                                <Setter Property="BorderThickness" Value="0.5"/>
+                                <Setter Property="BorderBrush" Value="#0078D7"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </TextBox.Resources>
+</TextBox>
